@@ -16,6 +16,6 @@ fi
 aws ssm send-command \
     --instance-ids "$instance_id" \
     --document-name "AWS-RunShellScript" \
-    --parameters 'commands=["cat /var/jenkins_home/secrets/initialAdminPassword"]' \
+    --parameters 'commands=["cat /var/lib/jenkins/secrets/initialAdminPassword"]' \
     --output text \
     --query "Command.{Status:Status,Output:Output}"
