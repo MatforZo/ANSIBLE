@@ -57,6 +57,7 @@ resource "aws_instance" "Jenkins" {
   instance_type          = "t2.medium"
   key_name               = "jenkins-key"
   vpc_security_group_ids = [aws_security_group.sg-22-443-80-8080.id] // Attaches newly created security group to the instance
+  user_data              = templatefile("./ec2_install.sh", {})
 
   root_block_device {
     volume_size = 20 // Specifies the storage size as 20 GB
